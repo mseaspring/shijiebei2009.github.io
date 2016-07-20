@@ -101,8 +101,8 @@ $code-block
   transition: 1.4s all;
   /* end */
 }
-/* start/
-.site-author-image:hover { 
+/* start */
+.site-author-image:hover {
   background-color: #55DAE1;
   webkit-transform: rotate(360deg) scale(1.1);
   moz-transform: rotate(360deg) scale(1.1);
