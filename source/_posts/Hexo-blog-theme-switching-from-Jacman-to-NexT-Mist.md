@@ -119,5 +119,36 @@ alt="Fork me on GitHub"
 data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png">
 </a>
 ```
+- **mathjax**数学公式后面有竖线的问题（在chrome中显示有竖线，在猎豹、Firefox中显示正常）
+这个问题已经发了[Issue](https://github.com/iissnan/hexo-theme-next/issues/752)，可以参考官方提供的解决方案。首先，编辑next的主题配置文件\_config.yml，在里面找到mathjax的部分，替换为以下内容：
+```css
+mathjax:
+  enable: true
+  cdn: //cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+```
+  打开`\themes\next\layout\_scripts\third-party\mathjax.swig`，将其内容替换为：
+```javascript
+{% if theme.mathjax.enable %}
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="{{ theme.mathjax.cdn }}"></script>
+{% endif %}
+```
+  之后清理，重新发布即可去除数学公式后面的竖线。
 
 ***转载请注明出处：http://codepub.cn/2016/03/20/Hexo-blog-theme-switching-from-Jacman-to-NexT-Mist/***
