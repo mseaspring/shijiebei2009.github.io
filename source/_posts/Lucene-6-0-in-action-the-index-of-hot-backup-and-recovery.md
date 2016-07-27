@@ -1,4 +1,4 @@
-title: Lucene 6.0实战-索引热备份及恢复
+title: Lucene 6.0 实战-索引热备份及恢复
 date: 2016-06-24 23:24:43
 tags: [Lucene]
 categories: Programming Notes

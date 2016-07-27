@@ -1,4 +1,4 @@
-title: Lucene 6.0实战（4）-文本分析器
+title: Lucene 6.0 实战（4）-文本分析器
 date: 2016-05-23 23:30:05
 tags: [Lucene]
 categories: Programming Notes
@@ -400,3 +400,4 @@ SimpleAnalyzer :+partnum:q +description:space
 (SimpleAnalyzer,KeywordAnalyzer) :+partnum:Q36 +description:space
 ```
 由结果可以看出，在索引阶段，使用KeywordAnalyzer作为partnum域的分词器，使用SimpleAnalyzer作为其它域的分词器，同样的在检索阶段，也必须这样处理，否则无法检索到结果。
+
