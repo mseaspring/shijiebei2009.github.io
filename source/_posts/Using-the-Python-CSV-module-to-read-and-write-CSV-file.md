@@ -183,6 +183,3 @@ Process finished with exit code 0
 参考资料
 【1】http://baike.baidu.com/subview/468993/5926031.htm
 【2】http://python3-cookbook.readthedocs.org/zh_CN/latest/c06/p01_read_write_csv_data.html?highlight=csv
-
-
-***转载请注明出处：http://codepub.cn/2015/10/08/Using-the-Python-CSV-module-to-read-and-write-CSV-file/***

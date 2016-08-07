@@ -647,6 +647,3 @@ loadLibrary.loadLibrary(String path)方式加载
 ***Notes***：另外发现了一个分布式中文分词组件，希望以后有机会可以深入研究，地址：https://github.com/ysc/word
 
 **Word**分词是一个**Java**实现的分布式的中文分词组件，提供了多种基于词典的分词算法，并利用**ngram**模型来消除歧义。能准确识别英文、数字，以及日期、时间等数量词，能识别人名、地名、组织机构名等未登录词。能通过自定义配置文件来改变组件行为，能自定义用户词库、自动检测词库变化、支持大规模分布式环境，能灵活指定多种分词算法，能使用**refine**功能灵活控制分词结果，还能使用词频统计、词性标注、同义标注、反义标注、拼音标注等功能。提供了10种分词算法，还提供了10种文本相似度算法，同时还无缝和**Lucene**、**Solr**、**ElasticSearch**、**Luke**集成。注意：**word1.3**需要**JDK1.8**。
-
-
-***转载请注明出处：http://codepub.cn/2016/03/23/Maven-project-integrating-Lucene-Chinese-Segmentation-tools-Jcseg-and-Ansj/***

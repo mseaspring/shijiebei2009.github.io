@@ -151,5 +151,3 @@ http://repo1.maven.org/maven2/.index/nexus-maven-repository-index.gz
   </profiles>
 </settings>
 ```
-
-***转载请注明出处：http://codepub.cn/2015/12/09/IntelliJ-IDEA-in-Maven-plugin-could-not-update-the-index-of-the-solution/***

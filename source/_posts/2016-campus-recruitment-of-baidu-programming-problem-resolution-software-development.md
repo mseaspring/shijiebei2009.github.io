@@ -360,5 +360,5 @@ public class Main3 {
 参考资料
 【1】http://www.jeepshoe.org/416642954.htm
 【2】http://www.cnblogs.com/sunus/p/4536082.html
+
 ***算法如有疏漏或不妥之处，还望不吝赐教！***
-***转载请注明出处：http://codepub.cn/2015/09/29/2016-campus-recruitment-of-baidu-programming-problem-resolution-software-development/***

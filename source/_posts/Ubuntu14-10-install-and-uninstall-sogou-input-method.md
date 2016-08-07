@@ -169,6 +169,3 @@ eric@eric-VirtualBox:~/Desktop$
 ![](http://7xig3q.com1.z0.glb.clouddn.com/ubuntu-uninstall-sogou-input-method3.jpg)
 
 - 最后别忘注销或者重启系统，如果注销按钮不能使用，可以使用命令`sudo pkill Xorg`，当再次登录系统之后，可以看到搜狗输入法已经完全被卸载干净了。
-
-
-***转载请注明出处：http://codepub.cn/2015/11/27/Ubuntu14-10-install-and-uninstall-sogou-input-method/***

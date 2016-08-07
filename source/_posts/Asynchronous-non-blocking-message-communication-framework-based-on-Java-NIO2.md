@@ -15,11 +15,11 @@ categories: Programming Notes
 - 更新的`Path`类，该类在`NIO`里对文件系统进行了进一步的抽象，用来替换原来的`java.io.File`，可以通过`File.toPath()`和`Path.toFile()`将`File`和`Path`进行相互转换
 - `File Attributes`，`java.nio.file.attribute`针对文件属性提供了各种用户所需的元数据，不同操作系统使用的类不太一样，支持的属性分类有
     - BasicFileAttributeView
-	- DosFileAttributeView
-	- PosixFileAttributeView
-	- FileOwnerAttributeView
-	- AclFileAttributeView
-	- UserDefinedFileAttributeView
+    - DosFileAttributeView
+    - PosixFileAttributeView
+    - FileOwnerAttributeView
+    - AclFileAttributeView
+    - UserDefinedFileAttributeView
 - `Symbolic and Hard Links`，相当于用`Java`程序实现`Linux`中的`ln`命令
 - `Watch Service API`，作为一个线程安全的服务用于监控对象的变化和事件，以前直接用`Java`监控文件系统的变化是不可能的，只能通过`JNI`的方式调用操作系统的`API`，而在`JDK7`中这部分被加入到了标准库里
 - `Random Access Files`主要提供了一个`SeekableByteChannel`接口，配合`ByteBuffer`使得随机访问文件更加方便
@@ -940,8 +940,6 @@ public class ServerOnReaderAndWriterForMultiClients {
 
 `Netty`中使用`ChannelBuffer`来处理读写，之所以废弃`ByteBuffer`，官方说法是`ChannelBuffer`简单易用并且有性能方面的优势。在`ChannelBuffer`中使用`ByteBuffer`或者`byte[]`来存储数据。同样的，`ChannelBuffer`也提供了几个标记来控制读写并以此取代`ByteBuffer`的`position`和`limit`，分别是：
 `0 <= readerIndex <= writerIndex <= capacity`，同时也有类似于`mark`的`markedReaderIndex`和`markedWriterIndex`。当写入`buffer`时，`writerIndex`增加，从`buffer`中读取数据时`readerIndex`增加，而不能超过`writerIndex`。有了这两个变量后，就不用每次写入`buffer`后调用`flip()`方法，方便了很多。
-
-***转载请注明出处：http://codepub.cn/2016/02/26/Asynchronous-non-blocking-message-communication-framework-based-on-Java-NIO2/***
 
 参考资料
 【1】https://www.ibm.com/developerworks/cn/java/j-lo-nio2/

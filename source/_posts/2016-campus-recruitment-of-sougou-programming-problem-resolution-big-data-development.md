@@ -181,4 +181,3 @@ public class Main {
 }
 ```
 ***算法如有疏漏或不妥之处，还望不吝赐教！***
-***转载请注明出处：http://codepub.cn/2015/10/24/2016-campus-recruitment-of-sougou-programming-problem-resolution-big-data-development/***

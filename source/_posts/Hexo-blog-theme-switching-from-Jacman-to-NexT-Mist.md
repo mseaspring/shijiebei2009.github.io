@@ -151,4 +151,14 @@ mathjax:
 ```
   之后清理，重新发布即可去除数学公式后面的竖线。
 
-***转载请注明出处：http://codepub.cn/2016/03/20/Hexo-blog-theme-switching-from-Jacman-to-NexT-Mist/***
+- **为Next主题添加版权信息**
+对于`Hexo Next`主题而言先找到`/themes/next/layout/_macro/post.swig`，再找到其中的`<footer class="post-footer">`字段，直接在其下面一行添加：
+```html
+{% if not is_index %}
+  <div class="copyright">
+  <p><span>
+  <b>本文地址：</b><a href="{{ url_for(page.path) }}" title="{{ page.title }}">{{ page.permalink }}</a><br/><b>转载请注明出处，谢谢！</b>
+  </span></p>
+  </div>
+{% endif %}
+```

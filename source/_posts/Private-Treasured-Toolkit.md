@@ -79,5 +79,3 @@ categories: Life-Talk
 
 最后附上Mac OS X常用快捷键一览
 ![](http://7xig3q.com1.z0.glb.clouddn.com/Mac_OSX_hot_key.jpg)
-
-***转载请注明出处：http://codepub.cn/2015/10/07/Private-Treasured-Toolkit/***

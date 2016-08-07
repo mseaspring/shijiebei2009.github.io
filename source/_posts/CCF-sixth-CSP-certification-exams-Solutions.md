@@ -385,5 +385,3 @@ M个预测状态
 
 
 啥？还有两题？对的，还有俩，不过第四道不会，第五道没写完就自动交卷了。不提也罢，码字速度还要跟上，虽然说机房键盘差劲，也没有我喜爱的IntelliJ，但是要从自身找原因。
-
-***转载请注明出处： http://codepub.cn/2015/12/21/CCF-sixth-CSP-certification-exams-Solutions/***
