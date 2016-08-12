@@ -8,7 +8,7 @@ categories: Programming Notes
 ####Lucene和Solr的历史版本
 [Lucene历史版本](http://archive.apache.org/dist/lucene/java/)，不妨点进去看看，会发现**Lucene**的版本更新很频繁，所以**Lucene**的**Doc**注释比**JDK**的**Doc**注释差太多，在研读`Lucene In Action`的过程中，发现此书的**Lucene**版本为**3.0**，而自己使用的**Lucene**版本是**5.5**，所以会有诸多冲突之处，现聊记之，以备查用。另外附上[Solr历史版本](http://archive.apache.org/dist/lucene/solr/)。
 
-在学习**Lucene**过程中，官方推荐的**Lucene**索引查看工具是`Luke`，下载地址[点我](https://java.net/projects/opengrok/downloads)
+在学习**Lucene**过程中，官方推荐的**Lucene**索引查看工具是`Luke`，下载地址[点我](https://java.net/projects/opengrok/downloads)。
 
 ####Lucene API变动相关
 - **Field**类中的枚举**Index**已被废弃，转而采用**FieldType**，并通过**setIndexOptions**方法设置索引选项
@@ -26,9 +26,9 @@ TermQuery termQuery1 = new TermQuery(new Term("city", "Venice"));
 BooleanQuery build = new BooleanQuery.Builder().add(termQuery,
 BooleanClause.Occur.MUST).add(termQuery1, BooleanClause.Occur.MUST).build();
 ```
-其中**Occur**有三种选项，分别是**MUST**表只有匹配该查询子句的文档才在考虑之列，**SHOULD**意味着该项只是可选项，**MUST_NOT**意味着搜索结果不会包含任何匹配该查询子句的文档。使用**SHOULD**可以实现逻辑或（**OR**）查询。
+  其中**Occur**有三种选项，分别是**MUST**表只有匹配该查询子句的文档才在考虑之列，**SHOULD**意味着该项只是可选项，**MUST_NOT**意味着搜索结果不会包含任何匹配该查询子句的文档。使用**SHOULD**可以实现逻辑或（**OR**）查询。
 - **PhraseQuery**中的构造函数和**setSlop**方法被废弃，推荐使用`PhraseQuery build = new PhraseQuery.Builder().setSlop(2).build();`代替
-- 同样**PhraseQuery**中**add()**方法废弃，推荐使用`new PhraseQuery.Builder().setSlop(2).add(term).add(term1).build()`代替，同时**slop**中的数值代表的是**term**和**term1**中间的字符个数，不包含**term**和**term1**在内。注意**slop**的默认值时0。
+- 同样**PhraseQuery**中**add()**方法废弃，推荐使用`new PhraseQuery.Builder().setSlop(2).add(term).add(term1).build()`代替，同时**slop**中的数值代表的是**term**和**term1**中间的字符个数，不包含**term**和**term1**在内。注意**slop**的默认值时0
 - **MatchAllDocsQuery(String normsField)**构造函数被删除，仅保留一个无参构造
 - 内建的**TermAttribute**被删除，推荐使用**CharTermAttribute**代替之，**TermAttributeImpl**被删除，推荐使用**CharTermAttributeImpl**代替之
 - **PerFieldAnalyzerWrapper.addAnalyzer()**方法被删除，使用构造函数初始化指定域所对应的分析器
@@ -62,7 +62,7 @@ Spans spans = weight.getSpans(indexReader.getContext().leaves().get(0), SpanWeig
 - 如果选择自己实现锁机制，要确认该机制能够正确运行，可以使用简单的调试工具，**LockStressTest**类，该类可以与**LockVerifyServer**类和**VerifyingLockFactory**类联合使用，以确认你自己实现的锁机制能正常运行
 - 刷新操作是用来释放被缓存的更改的，而提交操作是用来让所有的更改（包括被缓存的更改或者已经刷新的更改）在索引中保持可见
 - 打开**IndexReader**需要较大的系统开销，因此必须尽可能重复使用一个**IndexReader**实例以用于搜索，并限制打开新**IndexReader**的频率
-- **IndexSearcher**实例只能对其初始化时刻所对应的索引进行搜索。如果索引操作是由多线程完成的，新编入索引的文档则不能被该**searcher**看到。
+- **IndexSearcher**实例只能对其初始化时刻所对应的索引进行搜索。如果索引操作是由多线程完成的，新编入索引的文档则不能被该**searcher**看到
 - Query的一些子类说明：
  - 通过项进行搜索：**TermQuery**
  - 在指定的项范围内搜索：**TermRangeQuery**
@@ -70,8 +70,8 @@ Spans spans = weight.getSpans(indexReader.getContext().leaves().get(0), SpanWeig
  - 通配符查询：**WildcardQuery**
  - 搜索类似项：**FuzzyQuery**
  - 匹配所有文档：**MatchAllDocsQuery**
-- **BooleanQuery**对其中包含的查询子句（调用一次**add()**方法可以看作一个子句）是有数量限制的，默认情况下允许包含1024个查询子句，该限制主要是基于性能方面的考虑。当子句数量超过最大值时，程序会抛出**TooManyClauses**异常。如果你在一些特殊情况下，需要增大查询子句的数量限制，可以调用`setMaxClauseCount(int maxClauseCount)`方法进行设置，但是该操作明显会对性能产生影响。
-- 举例说明**PhraseQuery**匹配中**slop**的计算方式，这里的**slop**是指若要按顺序组成给定的短语所需要移动位置的次数。如**Amsterdam has lots of bridges**这句话，假如我需要查询**has**和**bridges**，那么它们之间的**slop**为2，假如我需要查询**bridges**和**has**（注意两次查询添加短语的顺序不同），那么它们之间的**slop**为4，这个4代表的是将**has**移动到**bridges**之后需要的步数。
+- **BooleanQuery**对其中包含的查询子句（调用一次**add()**方法可以看作一个子句）是有数量限制的，默认情况下允许包含1024个查询子句，该限制主要是基于性能方面的考虑。当子句数量超过最大值时，程序会抛出**TooManyClauses**异常。如果你在一些特殊情况下，需要增大查询子句的数量限制，可以调用`setMaxClauseCount(int maxClauseCount)`方法进行设置，但是该操作明显会对性能产生影响
+- 举例说明**PhraseQuery**匹配中**slop**的计算方式，这里的**slop**是指若要按顺序组成给定的短语所需要移动位置的次数。如**Amsterdam has lots of bridges**这句话，假如我需要查询**has**和**bridges**，那么它们之间的**slop**为2，假如我需要查询**bridges**和**has**（注意两次查询添加短语的顺序不同），那么它们之间的**slop**为4，这个4代表的是将**has**移动到**bridges**之后需要的步数
 - **PhraseQuery**支持复合项短语。无论短语中有多少个项，**slop**因子都规定了按顺序移动项位置的总次数的最大值。例如
 ```java
 //待检索文本：Venice has lots of canals
@@ -79,9 +79,9 @@ PhraseQuery build = new PhraseQuery.Builder().setSlop(1).add(new Term("contents"
 search = indexSearcher.search(build, 10);
 Assert.assertNotEquals(1, search.totalHits);//移动总次数为1+1=2，所以NotEquals
 ```
-- 在使用通配符**WildcardQuery**进行查询时，可能会降低系统的性能，较长的前缀可以减少用于查找匹配搜索枚举的项的个数，如以通配符为首的查询模式会强制枚举所有索引中的项以用于搜索匹配。
-- 类似查询**FuzzyQuery**会尽可能地枚举出一个索引中所有项，因此，最好尽量少地使用这类查询，即便要使用这类查询，起码也应当知晓其工作原理以及它对程序性能的影响。
-- **QueryParser**中针对某个项的否定操作必须与至少一个非否定项的操作联合起来进行，否则程序不会返回结果文档，换句话说不能使用**”NOT term“**而必须使用**”a AND NOT b“**。
+- 在使用通配符**WildcardQuery**进行查询时，可能会降低系统的性能，较长的前缀可以减少用于查找匹配搜索枚举的项的个数，如以通配符为首的查询模式会强制枚举所有索引中的项以用于搜索匹配
+- 类似查询**FuzzyQuery**会尽可能地枚举出一个索引中所有项，因此，最好尽量少地使用这类查询，即便要使用这类查询，起码也应当知晓其工作原理以及它对程序性能的影响
+- **QueryParser**中针对某个项的否定操作必须与至少一个非否定项的操作联合起来进行，否则程序不会返回结果文档，换句话说不能使用**“NOT term”**而必须使用**“a AND NOT b”**
 - 查询语句中用双引号括起来的项可以用来创建一个**PhraseQuery**，例如查询语句”This is some phrase\*“被**StandardAnalyzer**分析时，将被解析成用短语”some phrase“构成的**PhraseQuery**对象。星号不能被解释成模糊查询，请记住：双引号内的文本会促使分析器将之转换为PhraseQuery。那么说了这么多废话是什么意思呢？举例说明
 ```java
 Query query = new QueryParser("field", new StandardAnalyzer()).parse("\"This is some phrase*\"");
