@@ -152,13 +152,23 @@ mathjax:
   之后清理，重新发布即可去除数学公式后面的竖线。
 
 - **为Next主题添加版权信息**
-对于`Hexo Next`主题而言先找到`/themes/next/layout/_macro/post.swig`，再找到其中的`<footer class="post-footer">`字段，直接在其下面一行添加：
+对于`Hexo Next`主题而言先找到`/themes/next/layout/_macro/post.swig`，再找到其中的打赏部分代码，如下所示
 ```html
-{% if not is_index %}
-  <div class="copyright">
-  <p><span>
-  <b>本文地址：</b><a href="{{ url_for(page.path) }}" title="{{ page.title }}">{{ page.permalink }}</a><br/><b>转载请注明出处，谢谢！</b>
-  </span></p>
+    <div>
+      {% if ! is_index %}
+        {% include 'reward.swig' %}
+      {% endif %}
+    </div>
+```
+然后直接在其上面添加如下代码段：
+```html
+  <div align="center">
+    {% if not is_index %}
+    <div class="copyright">
+    <p><span>
+    <b>本文地址：</b><a href="{{ url_for(page.path) }}" title="{{ page.title }}">{{ page.permalink }}</a><br/><b>转载请注明出处，谢谢！</b>
+    </span></p>
+    </div>
+    {% endif %}
   </div>
-{% endif %}
 ```

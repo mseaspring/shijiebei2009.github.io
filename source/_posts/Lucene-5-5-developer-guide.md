@@ -82,7 +82,7 @@ Assert.assertNotEquals(1, search.totalHits);//移动总次数为1+1=2，所以No
 - 在使用通配符**WildcardQuery**进行查询时，可能会降低系统的性能，较长的前缀可以减少用于查找匹配搜索枚举的项的个数，如以通配符为首的查询模式会强制枚举所有索引中的项以用于搜索匹配
 - 类似查询**FuzzyQuery**会尽可能地枚举出一个索引中所有项，因此，最好尽量少地使用这类查询，即便要使用这类查询，起码也应当知晓其工作原理以及它对程序性能的影响
 - **QueryParser**中针对某个项的否定操作必须与至少一个非否定项的操作联合起来进行，否则程序不会返回结果文档，换句话说不能使用**“NOT term”**而必须使用**“a AND NOT b”**
-- 查询语句中用双引号括起来的项可以用来创建一个**PhraseQuery**，例如查询语句”This is some phrase\*“被**StandardAnalyzer**分析时，将被解析成用短语”some phrase“构成的**PhraseQuery**对象。星号不能被解释成模糊查询，请记住：双引号内的文本会促使分析器将之转换为PhraseQuery。那么说了这么多废话是什么意思呢？举例说明
+- 查询语句中用双引号括起来的项可以用来创建一个**PhraseQuery**，例如查询语句"This is some phrase\*"被**StandardAnalyzer**分析时，将被解析成用短语"some phrase"构成的**PhraseQuery**对象。星号不能被解释成模糊查询，请记住：双引号内的文本会促使分析器将之转换为PhraseQuery。那么说了这么多废话是什么意思呢？举例说明
 ```java
 Query query = new QueryParser("field", new StandardAnalyzer()).parse("\"This is some phrase*\"");
 Assert.assertEquals("analyzed", "\"? ? some phrase\"", query.toString("field"));
@@ -132,7 +132,7 @@ System.out.println(query.toString("field"));
 |lastmodified:[1/1/04 TO 12/31/04]|在lastmodified字段中值为2004-01-01到2004-12-31中间的|
 |+pubdate:[10100101 TO 20101231] Java AND (Lucene OR Apache)|检索2010年出版的关于Java、且内容中包含Lucene或Apache关键字的所有书籍|
 
-**注意：**如果查询表达式使用了以下特殊字符，你就应该对其进行转义操作，使这些字符在一般的表达式中能够发挥作用。**QueryParser**在各个项中使用反斜杠(\)来表示转义字符。需要进行转义的字符有：`\ + - ! ( ) : ^ ] { } ~ * ?`
+**注意：**如果查询表达式使用了以下特殊字符，你就应该对其进行转义操作，使这些字符在一般的表达式中能够发挥作用。**QueryParser**在各个项中使用反斜杠`(\)`来表示转义字符。需要进行转义的字符有：`\ + - ! ( ) : ^ ] { } ~ * ?`
 
 ####Lucene常见Field
 |表达式   | 匹配文档  |
