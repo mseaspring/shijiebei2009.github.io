@@ -18,7 +18,7 @@ categories: Life-Talk
 ####人人贷
 人人贷，唯一上市的P2P投资平台，靠谱。收益率在5-10个点左右，定投期限不同，任君选购。由民生银行资金存管，中国互联网协会AAA级信用平台，新人红包高达4999元，新手专享标年化收益9.6%，[点我注册](http://www.we.com/regPageLandingD.action?inviteCode=11j3Fs7zKEz0Q)。
 
-####挖财网
+####挖财
 投资挖财很简单，因为他们是国内为数不多的使用Scala语言的公司，试问哪一家要跑路的平台会使用这么强大新颖的技术，此家公司必然是有着长久的打算的，所以放心投资。收益率在6-12个点左右，新手注册就送20元红包，可抵扣本金，另外还有新手专享12%年化收益的新人宝（最高送150现金）等着你，[点我注册](https://8.wacai.com/finance/newInvitation/do_invRegIndex.action?u=beb5ca977df7c722&a_f=yq0hy$-01-004)。
 
 ####蚂蚁聚宝
@@ -28,12 +28,14 @@ categories: Life-Talk
 黄金从年初一直涨到现在，苦于没钱投资，只能干看着别人挣钱，哎，都是泪啊。黄金钱包是由软银领头、国资入股的互联网黄金平台，新手可以特权价购买一克黄金，目前黄金市价285/克，特权价249/克，另外每天还可以挖金矿，运气佳会挖到一毫克，钱虽不多，可以练手，有兴趣的可以试试，[点我注册](https://activity.g-banker.com/views/wapLandingPage/newIndexModel.html?price=249&channelCode=yaoqing&userCode=cffae3f33e8a45b18773674c7833d941)。
 
 ####稳赚不赔
-最大的投资就是投资自己，如果你坚持不到退休，那么你所上交的钱基本都是无偿贡献给国家了，投资自己包括身体上（吃、喝、健身）、学识上（学习、充电）、精神上（音乐会、舞台剧、演唱会）等，试想，万一在退休前挂了，那么所上交了半辈子的险基本上是免费贡献给国家了，这还是在没有延退的情况下。所以人生苦短，没有经历过的还是很值得去尝试享受一番的。
+最大的投资就是投资自己，投资自己包括身体上（吃、喝、健身）、学识上（学习、充电）、精神上（音乐会、舞台剧、演唱会）等，试想，万一在退休前挂了，那么所上交了半辈子的险基本上是免费贡献给国家了，这还是在没有延退的情况下。所以人生苦短，没有经历过的还是很值得去尝试享受一番的。
 
 **声明**：各位如果想注册的话，请走我的推荐链接，谢谢。以上仅是个人投资项目，仅供参考。
 
 ###彩蛋
 在「卢冠廷BEYOND IMAGINATION LIVE 2016演唱会」上，已经年过花甲的卢冠廷重新演唱了经典的《一生所爱》，听来不禁让人潸然泪下，奉献给大家。
-
-<embed src="http://static.video.qq.com/TPout.swf?vid=k0199hnmf8m&auto=0" allowFullScreen="true" quality="high" width="720" height="600" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
-
+<center>
+<embed src="http://static.video.qq.com/TPout.swf?vid=k0199hnmf8m&auto=0" allowFullScreen="true" quality="high" width="720" height="600" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash">
+</embed>
+<br/>
+</center>
