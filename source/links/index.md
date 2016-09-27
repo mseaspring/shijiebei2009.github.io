@@ -28,10 +28,12 @@ date: 2015-06-14 18:41:08
 [NLPCN一个非盈利的自然语言处理组织](http://www.nlpcn.org/)
 [我爱自然语言处理](http://www.52nlp.cn/)
 [我爱机器学习](http://www.52ml.net/)
-[阿里核心系统团队博客](http://csrd.aliapp.com/)
+[淘宝搜索技术博客](http://www.searchtb.com/)
 [阿里中间件团队博客](http://jm.taobao.org/)
-
-
+[美团点评技术博客](http://tech.meituan.com/)
+[携程技术分享](http://techshow.ctrip.com/archives/category/share)
+[奇虎360技术博客](http://blogs.360.cn/)
+[腾讯全端AlloyTeam团队Blog](http://www.alloyteam.com/)
 
 ###友链
 [代码馆](http://www.codepub.cn)
