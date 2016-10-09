@@ -48,7 +48,7 @@ public void setNoCFSRatio(double noCFSRatio)
 If a merged segment will be more than this percentage of the total size of the index, leave the segment as non-compound file even if compound file is enabled. **Set to 1.0 to always use CFS regardless of merge size**.
 
 继续追踪noCFSRatio查找到了预定义的默认值**DEFAULT_NO_CFS_RATIO**，该默认值为1.0，而根据Doc说明，当该值为1.0的时候，总是使用复合索引文件并且忽略合并大小的设置，所以就出现了设置不使用复合索引文件但无效的情况。
-```
+```java
 protected static final double DEFAULT_NO_CFS_RATIO = 1.0;
 protected double noCFSRatio = DEFAULT_NO_CFS_RATIO;
 ```
@@ -63,12 +63,11 @@ If a merged segment will be more than this value, leave the segment as non-compo
 ### 测试
 使用不同的合并策略配合三种设置，添加50000000个Document，其中每个Document包含10个Field，这些Field类型包括Int、Long、String，其值随机生成。随后根据主键搜索1000000次，统计其累计搜索耗时，其中主键为String类型数字，主键值为[0，50000000)。
 
-| 合并策略 | 设置  |索引文件数|索引总量|最大单索引文件|搜索总耗时|单次搜索最大耗时|单次搜索最小耗时|
-| ---- | ---- |----| ---- |----|----|----|----|
-| TieredMergePolicy  | 默认  |123| 7.33GB  |464MB|58.2s|140ms|0ms|
-| LogByteSizeMergePolicy | logByteSizeMergePolicy.setMinMergeMB(1);<br/>logByteSizeMergePolicy.setMaxMergeMB(64);|239|7.77GB|127MB|127.1s|314ms|0ms|
-| LogByteSizeMergePolicy | indexWriterConfig.setUseCompoundFile(false);<br/>logByteSizeMergePolicy.setMinMergeMB(1);<br/>logByteSizeMergePolicy.setMaxMergeMB(64);<br/> logByteSizeMergePolicy.setMaxCFSSegmentSizeMB(64);|451|7.77GB|60.8MB|152.1s|446ms|0ms|
-
+| 合并策略 | 参数设置  |索引文件数|索引总量|最大单索引文件|搜索总耗时|单次搜索最大耗时|
+| :---- | :---- | ----: | ----: | ----: | ----: | ----: |
+| TieredMergePolicy  | 默认  |123| 7.33GB  |464MB|58.2s|140ms|
+| LogByteSizeMergePolicy | logByteSizeMergePolicy.setMinMergeMB(1);<br/>logByteSizeMergePolicy.setMaxMergeMB(64);|239|7.77GB|127MB|127.1s|314ms|
+| LogByteSizeMergePolicy | indexWriterConfig.setUseCompoundFile(false);<br/>logByteSizeMergePolicy.setMinMergeMB(1);<br/>logByteSizeMergePolicy.setMaxMergeMB(64);<br/> logByteSizeMergePolicy.setMaxCFSSegmentSizeMB(64);|451|7.77GB|60.8MB|152.1s|446ms|
 
 ### 总结
 虽然每次运行结果时间稍有不同，但总体趋势应该是不变的。即单索引文件上限越小，则生成的索引文件数量越多，索引文件数量越多，对应的单次搜索最长时间和总搜索时间均越长。所以应根据业务需求选择适当的合并策略，在满足需求之后尽可能提高搜索性能。
