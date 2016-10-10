@@ -22,6 +22,7 @@ date: 2015-06-14 18:41:08
 [码农场，太花哨，不够简洁](http://www.hankcs.com/)
 [七牛CEO许式伟，Go语言布道者](http://xushiwei.com/)
 [C++/Golang/Node.js/IOS结巴分词作者](http://yanyiwu.com/)
+[谢益辉，数据可视化，统计计算等](http://yihui.name/cn/)
 
 ###推荐站点
 [开源自由的汉语言处理包](http://hanlp.linrunsoft.com/)

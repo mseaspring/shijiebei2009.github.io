@@ -35,7 +35,15 @@ private double reclaimDeletesWeight = 2.0;
 ### 复合索引文件
 复合索引文件是指，除了段信息文件，锁文件，以及删除的文件外，其他的一系列索引文件压缩一个后缀名为cfs的文件，意思就是所有的索引文件会被存储成一个单例的Directory，而非复合索引是灵活的，可以单独的访问某几个索引文件，而复合索引文件则不可以，因为其压缩成了一个文件，所以在某些场景下能够获取更高的效率，比如说，查询频繁，而不经常更新的需求，就很适合这种复合索引格式。
 
-如果仅仅设置`setUseCompoundFile(false)`，那么在生成的索引中，依然会有复合索引文件并且其大小会超过`setMaxMergeMB(double mb)`所设置的大小，是不是很奇怪，这是为什么呢？查看Doc说明如下：
+如果仅仅设置`setUseCompoundFile(false)`，那么在生成的索引中，依然会有复合索引文件并且其大小会超过`setMaxMergeMB(double mb)`所设置的大小，是不是很奇怪，这是为什么呢？收先查看`setMaxMergeMB(double mb)`Doc说明如下：
+>org.apache.lucene.index.LogByteSizeMergePolicy
+public void setMaxMergeMB(double mb)
+Determines the largest segment (measured by total byte size of the segment's files, in MB) that may be merged with other segments. Small values (e.g., less than 50 MB) are best for interactive indexing, as this limits the length of pauses while indexing to a few seconds. Larger values are best for batched indexing and speedier searches.
+Note that setMaxMergeDocs is also used to check whether a segment is too large for merging (it's either or).
+
+该函数用于控制可用于合并的最大的段文件大小，通常合并之后的段文件的大小均会超过此值。所以单靠此函数不能实现控制单索引文件上限的目标。
+
+继续查看`setUseCompoundFile(false)`Doc说明如下：
 >org.apache.lucene.index.LiveIndexWriterConfig
 public LiveIndexWriterConfig setUseCompoundFile(boolean useCompoundFile)
 Sets if the IndexWriter should pack newly written segments in a compound file. Default is true.
@@ -58,7 +66,6 @@ public void setMaxCFSSegmentSizeMB(double v)
 If a merged segment will be more than this value, leave the segment as non-compound file even if compound file is enabled. Set this to Double.POSITIVE_INFINITY (default) and noCFSRatio to 1.0 to always use CFS regardless of merge size.
 
 可知如果合并之后段文件大小会超过此值时，就保留该段文件为非复合索引文件，亦即不进行合并，所以此方法可以达到控制单索引文件上限的目标。
-
 
 ### 测试
 使用不同的合并策略配合三种设置，添加50000000个Document，其中每个Document包含10个Field，这些Field类型包括Int、Long、String，其值随机生成。随后根据主键搜索1000000次，统计其累计搜索耗时，其中主键为String类型数字，主键值为[0，50000000)。
