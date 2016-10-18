@@ -1,5 +1,5 @@
 title: 'Java 8 配置Maven-javadoc-plugin'
-date: date: 2016-10-18 22:41:30
+date: 2016-10-18 22:41:30
 tags: [Maven]
 categories: Programming Notes
 toc: false
@@ -43,7 +43,7 @@ toc: false
 * 不能有重复的HTML id attribute
 * 不能有空的HTML href attribute
 * 不能有不正确的嵌套标题，例如类的文档说明中必须有`<h3>`而不是`<h4>`
-* 不能有非法的HTML tags，例如`List<String>`需要用`&lt;`
+* 不能有非法的HTML tags，例如`List<String>`需要用`<`
 * 不能有损坏的`@link references`
 * 不能有损坏的`@param references`，它们必须匹配实际的参数名称
 * 不能有损坏的`@throws references`，第一个词必须是一个类名称
