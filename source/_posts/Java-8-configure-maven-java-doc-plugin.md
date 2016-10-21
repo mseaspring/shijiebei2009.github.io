@@ -35,7 +35,7 @@ toc: false
 [ERROR] * @return
 [ERROR] ^
 
-经查得知，在JDK 8中，Javadoc中添加了*doclint*，而这个工具的主要目的是旨在获得符合W3C HTML 4.01 HTML，在JDK 8中，已经无法获取如下的Javadoc，除非它满足*doclint*
+经查得知，在JDK 8中，Javadoc中添加了*doclint*，而这个工具的主要目的是旨在获得符合W3C HTML 4.01标准规范的HTML文档，在JDK 8中，已经无法获取如下的Javadoc，除非它满足*doclint*：
 * 不能有自关闭的HTML tags，例如`<br/>`或者`<a id="x"/>`
 * 不能有未关闭的HTML tags，例如有`<ul>`而没有`</ul>`
 * 不能有非法的HTML end tags，例如`</br>`
@@ -43,7 +43,7 @@ toc: false
 * 不能有重复的HTML id attribute
 * 不能有空的HTML href attribute
 * 不能有不正确的嵌套标题，例如类的文档说明中必须有`<h3>`而不是`<h4>`
-* 不能有非法的HTML tags，例如`List<String>`需要用`<`
+* 不能有非法的HTML tags，例如`List<String>`需要用`<>`对应的实体符号
 * 不能有损坏的`@link references`
 * 不能有损坏的`@param references`，它们必须匹配实际的参数名称
 * 不能有损坏的`@throws references`，第一个词必须是一个类名称
